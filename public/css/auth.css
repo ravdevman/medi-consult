@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+.tab.active {
+    background-color: var(--secondary);
+    color: white;
+    font-weight: bold;
+}
+
+.card {
+    padding: 20px;
+    background-color: var(--white);
+    width: fit-content;
+    border: 1px solid var(#E0E7FF);
+    border-radius: 15px;
+}
+
+.card form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.form-section {
+    display: none;
+}
+
+.form-section.active {
+    display: flex;
+    justify-content: center;
+}
