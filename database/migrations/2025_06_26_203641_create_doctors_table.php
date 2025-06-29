@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->date('field');
+            $table->string('field');
             $table->string('city');
             $table->foreignId("user_id")->constrained();
             $table->timestamps();

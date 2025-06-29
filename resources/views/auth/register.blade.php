@@ -43,8 +43,8 @@
                         <input name="lastName" type="text" placeholder="Nom">
                         <input name="email" type="email" placeholder="Email">
                         <input name="password" type="password" placeholder="Mot de passe">
-                        <select name="specialty">
-                            <option>Spécialité</option>
+                        <select name="field">
+                            <option>Generaliste</option>
                         </select>
                         <select name="city">
                             <option>casablanca</option>

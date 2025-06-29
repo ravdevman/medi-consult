@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield("title", "Dashboard")</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul  class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="">Crenaux</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">rendez-vous</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            @yield("content")
+        </div>
+        <footer>
+            Copyright @ Mediconsult
+        </footer>
+    </main>
+</body>
+</html>
