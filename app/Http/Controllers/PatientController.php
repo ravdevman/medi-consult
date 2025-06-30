@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Slot;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -10,9 +13,29 @@ class PatientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('patient.index');
+
+        $doctors = User::where('role', 'doctor')
+            ->with('doctor')
+            ->whereHas('doctor', function ($q) use ($request) {
+                if ($request->filled('field')) {
+                    $q->where('field', $request->field);
+                }
+                if ($request->filled('city')) {
+                    $q->where('city', $request->city);
+                }
+            })
+            ->get();
+
+
+        return view('patient.index', compact('doctors'));
+    }
+
+    public function showDoctor($id) {
+        $doctor = User::where(['role' => 'doctor', 'id' => $id])->with('doctor')->first();
+        $slots = Slot::where(['doctor_id' => $id, 'isAvailable' => true])->get();
+        return view('patient.doctor', compact('doctor', 'slots'));
     }
 
     /**

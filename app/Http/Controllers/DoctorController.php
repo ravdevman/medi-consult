@@ -49,12 +49,12 @@ class DoctorController extends Controller
 
 
         Slot::create([
-            'doctor_id' => auth()->id(),
+            'doctor_id' => auth()->user()->doctor->id,
             'day' => $validated['day'],
             'startTime' => $validated['startTime'],
             'endTime' => $validated['endTime'],
             'duration' => $duration,
-            'isAvailable' => false,
+            'isAvailable' => true,
         ]);
 
         return redirect()->back()->with('success', 'Créneau ajouté avec succès.');
