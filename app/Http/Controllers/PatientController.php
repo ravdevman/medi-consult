@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Slot;
@@ -15,7 +16,6 @@ class PatientController extends Controller
      */
     public function index(Request $request)
     {
-
         $doctors = User::where('role', 'doctor')
             ->with('doctor')
             ->whereHas('doctor', function ($q) use ($request) {
@@ -34,8 +34,23 @@ class PatientController extends Controller
 
     public function showDoctor($id) {
         $doctor = User::where(['role' => 'doctor', 'id' => $id])->with('doctor')->first();
-        $slots = Slot::where(['doctor_id' => $id, 'isAvailable' => true])->get();
+        $slots = Slot::where(['doctor_id' =>$doctor->doctor->id])->get();
         return view('patient.doctor', compact('doctor', 'slots'));
+    }
+
+    public function makeAppointment(Slot $slot) {
+        Appointment::create([
+            'slot_id' => $slot->id,
+            'doctor_id' => $slot->doctor->id,
+            'status' => Appointment::STATUS_PENDING,
+            'patient_id' => auth()->user()->patient->id,
+            'report_id' => null,
+        ]);
+
+        $slot->isAvailable = false;
+        $slot->save();
+
+        return redirect()->back()->with('success', 'Rendez-vous créé avec succès.');
     }
 
     /**

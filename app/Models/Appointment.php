@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
+    public const STATUS_VALIDATED = 'validated';
+    public const STATUS_REFUSED   = 'refused';
+    public const STATUS_PENDING   = 'pending';
+
     protected $fillable = [
         'status',
         'slot_id',

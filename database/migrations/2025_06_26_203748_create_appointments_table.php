@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('slot_id')->constrained();
             $table->foreignId("patient_id")->constrained();
             $table->foreignId('doctor_id')->constrained();
-            $table->foreignId('report_id')->constrained();
+            $table->foreignId('report_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
