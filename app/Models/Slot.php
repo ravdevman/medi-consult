@@ -8,9 +8,10 @@ class Slot extends Model
 {
     protected $fillable = [
         'day',
-        'startDate',
-        'endDate',
+        'startTime',
+        'endTime',
         'duration',
+        'isAvailable',
         'doctor_id'
     ];
 

@@ -15,6 +15,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="">rendez-vous</a>
                 </li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit">Se déconnecter</button>
+                </form>
             </ul>
         </nav>
     </header>

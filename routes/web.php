@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +18,15 @@ Route::post("/login", [AuthController::class, "login"] )->name("login");
 /* Auth protected */
 Route::middleware('auth')->group(function () {
 
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
     Route::get('/', function () {
         $user = auth()->user();
 
         if ($user->isDoctor()) {
             return redirect()->route('doctor.dashboard');
         } elseif ($user->isPatient()) {
-            return redirect()->route('patient.index');
+            return redirect()->route('patient.portal');
         }
 
         return view('welcome');
@@ -31,6 +34,11 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['doctor'])->prefix('doctor')->name('doctor.')->group(function () {
         Route::get('/dashboard', [DoctorController::class, 'index'])->name('dashboard');
+        Route::post('/slot/store', [DoctorController::class, 'addSlot'])->name('addSlot');
+    });
+
+    Route::middleware(['patient'])->prefix('patient')->name('patient.')->group(function () {
+        Route::get('/portal', [PatientController::class, 'index'])->name('portal');
     });
 
     //Route::resource("user", UserController::class);

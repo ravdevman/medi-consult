@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('slots', function (Blueprint $table) {
             $table->id();
-            $table->string('day');
-            $table->date('startDate');
-            $table->date('endDate');
+            $table->date('day');
+            $table->time('startTime');
+            $table->time('endTime');
             $table->integer('duration');
+            $table->boolean('isAvailable');
             $table->foreignId("doctor_id")->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

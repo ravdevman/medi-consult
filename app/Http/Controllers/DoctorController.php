@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Slot;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -29,6 +31,33 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function addSlot(Request $request)
+    {
+        $validated = $request->validate([
+            'day' => 'required|date',
+            'startTime' => 'required|date_format:H:i',
+            'endTime' => 'required|date_format:H:i|after:startTime',
+        ]);
+
+
+        $start = Carbon::createFromFormat('H:i', $validated['startTime']);
+        $end = Carbon::createFromFormat('H:i', $validated['endTime']);;
+
+        $duration = $start->diffInMinutes($end);
+
+
+        Slot::create([
+            'doctor_id' => auth()->id(),
+            'day' => $validated['day'],
+            'startTime' => $validated['startTime'],
+            'endTime' => $validated['endTime'],
+            'duration' => $duration,
+            'isAvailable' => false,
+        ]);
+
+        return redirect()->back()->with('success', 'Créneau ajouté avec succès.');
     }
 
     /**
