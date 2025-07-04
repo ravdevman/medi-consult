@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Slot;
 use Carbon\Carbon;
@@ -15,6 +16,12 @@ class DoctorController extends Controller
     public function index()
     {
         return view('doctor.slots');
+    }
+
+    public function appointments() {
+        $appointments = Appointment::where('doctor_id', auth()->user()->doctor->id)->get();
+
+        return view('doctor.appointments', compact('appointments'));
     }
 
     /**

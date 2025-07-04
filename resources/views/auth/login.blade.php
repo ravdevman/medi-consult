@@ -8,18 +8,21 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Medi Condult - login</h1>
         <div class="card">
-            <form method="post" action="{{route('login')}}">
-                @csrf
-                <input name="email" type="email" placeholder="Email">
-                <input name="password" type="password" placeholder="mot de passe">
-                <input type="submit" value="Se connecter">
-            </form>
-            <a href="{{route('register')}}" >Cree un compte</a>
+            <div class="section formSection">
+                    <h4 >Se connecter à</h4>
+                    <h3>Medi Condult</h3>
+                    <form method="post" action="{{route('login')}}">
+                        @csrf
+                        <input name="email" type="email" placeholder="Email">
+                        <input name="password" type="password" placeholder="mot de passe">
+                        <input type="submit" value="Se connecter">
+                    </form>
+                    <a href="{{route('register')}}" >Ou crée un compte</a>
+            </div>
+            <div class="section">
+                <img src="{{ asset('images/hero.jpg') }}" />
+            </div>
         </div>
-    <div>
-
 </body>
 </html>

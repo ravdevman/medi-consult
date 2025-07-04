@@ -9,57 +9,59 @@
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 </head>
 <body>
-<div class="container">
-    <h1>Medi Condult - Register</h1>
-    <div class="tabs">
-        <div class="tab active" id="tab-patient" onclick="switchTab('patient')">Patient</div>
-        <div class="tab" id="tab-doctor" onclick="switchTab('doctor')">Medecin</div>
-    </div>
+<div class="card card-reverse">
+    <div class="section formSection">
+        <h4>Crée un compte</h4>
+        <h3>Medi Condult</h3>
+        <div class="tabs">
+            <div class="tab active" id="tab-patient" onclick="switchTab('patient')">Patient</div>
+            <div class="tab" id="tab-doctor" onclick="switchTab('doctor')">Medecin</div>
+        </div>
 
-    <!-- Patient Form -->
-    <div class="form-section active" id="patient-form">
-        <div class="card">
-            <form action="{{route('user.store')}}" method="post">
-                @csrf
-                <input type="hidden" name="role" value="patient">
-                <input name="firstName" type="text" placeholder="Prenom">
-                <input name="lastName" type="text" placeholder="Nom">
-                <input name="CIN" type="text" placeholder="CIN">
-                <input name="email" type="email" placeholder="Email">
-                <input name="password" type="password" placeholder="Mot de passe">
-                <input name="birthDate" type="date">
-                <input type="submit" value="Créer un compte">
-            </form>
-            <a href="{{route('login')}}">Vous avez deja un compte</a>
+        <!-- Patient Form -->
+        <div class="form-section-container active" id="patient-form">
+                <form action="{{route('user.store')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="role" value="patient">
+                    <input name="firstName" type="text" placeholder="Prenom">
+                    <input name="lastName" type="text" placeholder="Nom">
+                    <input name="CIN" type="text" placeholder="CIN">
+                    <input name="email" type="email" placeholder="Email">
+                    <input name="password" type="password" placeholder="Mot de passe">
+                    <input name="birthDate" type="date">
+                    <input type="submit" value="Créer un compte">
+                </form>
+                <a href="{{route('login')}}">Vous avez deja un compte</a>
+        </div>
+
+        <!-- Doctor Form -->
+        <div class="form-section-container" id="doctor-form">
+                <form action="{{route('user.store')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="role" value="doctor">
+                    <input name="firstName" type="text" placeholder="Prenom">
+                    <input name="lastName" type="text" placeholder="Nom">
+                    <input name="email" type="email" placeholder="Email">
+                    <input name="password" type="password" placeholder="Mot de passe">
+                    <select name="field">
+                        @foreach (Doctor::FIELDS as $key => $label)
+                            <option value="{{ $key }}">{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    <select name="city">
+                        @foreach (Doctor::CITIES as $key => $label)
+                            <option value="{{ $key }}">{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    <input type="submit" value="Créer un compte">
+                </form>
+                <a href="{{route('login')}}">Vous avez deja un compte</a>
         </div>
     </div>
-
-    <!-- Doctor Form -->
-    <div class="form-section" id="doctor-form">
-        <div class="card">
-            <form action="{{route('user.store')}}" method="post">
-                @csrf
-                <input type="hidden" name="role" value="doctor">
-                <input name="firstName" type="text" placeholder="Prenom">
-                <input name="lastName" type="text" placeholder="Nom">
-                <input name="email" type="email" placeholder="Email">
-                <input name="password" type="password" placeholder="Mot de passe">
-                <select name="field">
-                    @foreach (Doctor::FIELDS as $key => $label)
-                        <option value="{{ $key }}">{{ $label }}</option>
-                    @endforeach
-                </select>
-                <select name="city">
-                    @foreach (Doctor::CITIES as $key => $label)
-                        <option value="{{ $key }}">{{ $label }}</option>
-                    @endforeach
-                </select>
-                <input type="submit" value="Créer un compte">
-            </form>
-            <a href="{{route('login')}}">Vous avez deja un compte</a>
-        </div>
+    <div class="section">
+        <img src="{{ asset('images/hero.jpg') }}" />
     </div>
-</div>
+    </div>
 </div>
 
 <script>
@@ -69,7 +71,7 @@
         });
         document.getElementById('tab-' + type).classList.add('active');
 
-        document.querySelectorAll('.form-section').forEach(form => {
+        document.querySelectorAll('.form-section-container').forEach(form => {
             form.classList.remove('active');
         });
         document.getElementById(type + '-form').classList.add('active');

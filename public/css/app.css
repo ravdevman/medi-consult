@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 :root {
-    --primary: #3B82F6;
-    --secondary: #60A6FA;
-    --dark: #6c7c8c;
+    --primary: #40ACC9;
+    --secondary: #B8ECFA;
+    --dark: #0676A4;
     --white: #fbfbfb;
-    --light: #EAF2FE;
-    /*
-    --primaryPatient: "#8BC34A";
-    --secondaryPatient: "#AED581";
-    --darkPatient: "#204835";
-    --whitePatient: "#F1F8E9";*/
+    --light: #F2F2F0;
+    --gray: #707070;
+}
+
+* {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
 }
 
 body {
@@ -26,11 +28,49 @@ input {
     font-size: 14px;
     border-radius: 6px;
     line-height: 1.5;
+    background-color: #f8f8f8;
+    width: 100%;
     padding: 3px 10px;
     transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
     border: 2px solid #dee1e2;
     display: block;
+    box-sizing: border-box;
     height: 36px;
+}
+
+select {
+    font-size: 14px;
+    border-radius: 6px;
+    line-height: 1.5;
+    background-color: #f8f8f8;
+    width: 100%;
+    padding: 3px 10px;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+    border: 2px solid #dee1e2;
+    display: block;
+    box-sizing: border-box;
+    height: 36px;
+}
+
+input[type=submit] {
+   background-color: var(--primary);
+    cursor: pointer;
+    color: var(--white);
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark);
+}
+
+input[type=submit]:hover {
+    background-color: var(--secondary);
+}
+
+
+input:focus {
+    outline: none;
 }
 
 
@@ -39,6 +79,6 @@ input:hover {
 }
 
 input:focus{
-    border-color: #9147ff;
+    border-color: var(--primary);
     background: #fff;
 }

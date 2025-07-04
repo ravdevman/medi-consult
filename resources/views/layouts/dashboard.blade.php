@@ -10,10 +10,10 @@
         <nav class="navbar">
             <ul  class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Crenaux</a>
+                    <a class="nav-link" href="{{route('doctor.dashboard')}}">Crenaux</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">rendez-vous</a>
+                    <a class="nav-link" href="{{route('doctor.appointments')}}">rendez-vous</a>
                 </li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

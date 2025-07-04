@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['doctor'])->prefix('doctor')->name('doctor.')->group(function () {
         Route::get('/dashboard', [DoctorController::class, 'index'])->name('dashboard');
+        Route::get('/appointments', [DoctorController::class, 'appointments'])->name('appointments');
         Route::post('/slot/store', [DoctorController::class, 'addSlot'])->name('addSlot');
     });
 
