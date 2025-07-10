@@ -1,0 +1,126 @@
+body {
+    background-color: var(--white);
+}
+
+header {
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+main {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container-card {
+    border: 1px solid var(--lightGray);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 20px;
+}
+.container-card img {
+    height: 150px;
+    width: 100%;
+}
+
+.search form {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+.container-doctors-list {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.search {
+    width: 50%;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.back input {
+    width: fit-content;
+}
+
+.doctor-details-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid var(--lightGray);
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+table {
+    margin-top: 30px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+     background-color: var(--lightGray);
+    color: #0a0a0a;
+ }
+
+
+
+table, td, th {
+    border: 1px solid var(--lightGray);
+}
+
+.booking-table input {
+    background-color: var(--green);
+}
+
+.booking-table input:hover {
+    background-color: var(--greenLight);
+}
+
+.booking-table input[type="submit"]:disabled {
+    background-color: #ccc;     /* Light gray background */
+    color: #666;                /* Darker gray text */
+    cursor: not-allowed;        /* Show "not-allowed" cursor */
+    opacity: 0.6;               /* Optional: make it look faded */
+    border: 1px solid #999;
+}

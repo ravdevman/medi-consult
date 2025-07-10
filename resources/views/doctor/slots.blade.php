@@ -1,7 +1,7 @@
 @extends("layouts.dashboard")
 @section("title", "Dashboard - home")
 @section("content")
-    <h1>Medecin DASHBOARD</h1>
+    <h1>Medecin Crénaux</h1>
     {{ session('success') }}
     <form method="post" action="{{route('doctor.addSlot')}}">
         @csrf

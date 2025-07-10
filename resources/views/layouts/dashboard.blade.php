@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield("title", "Dashboard")</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 <body>
-    <header>
+    <header class="card">
         <nav class="navbar">
+            <h3>Mediconsult</h3>
             <ul  class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('doctor.dashboard')}}">Crenaux</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('doctor.appointments')}}">rendez-vous</a>
-                </li>
+                <div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('doctor.dashboard')}}">Crenaux</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('doctor.appointments')}}">rendez-vous</a>
+                    </li>
+                </div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit">Se déconnecter</button>
+                    <input class="red-button" type="submit" value="Se déconnecter"/>
                 </form>
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="card">
         <div class="container">
             @yield("content")
         </div>

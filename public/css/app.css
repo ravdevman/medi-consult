@@ -6,6 +6,11 @@
     --white: #fbfbfb;
     --light: #F2F2F0;
     --gray: #707070;
+    --red: #F7374F;
+    --lightGray: #dee1e2;
+    --green: #A4DD00;
+    --greenLight: #D3E671;
+    --black: #222831;
 }
 
 * {
@@ -81,4 +86,12 @@ input:hover {
 input:focus{
     border-color: var(--primary);
     background: #fff;
+}
+
+input[type=submit].red-button {
+    background-color: var(--red);
+}
+
+input[type=submit].red-button:hover {
+    background-color: #ef9ca6;
 }
