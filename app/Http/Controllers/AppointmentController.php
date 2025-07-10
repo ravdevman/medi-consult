@@ -23,6 +23,14 @@ class AppointmentController extends Controller
         //
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        $appointment->status = $request->status;
+        $appointment->save();
+        return redirect()->route('doctor.appointments');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
