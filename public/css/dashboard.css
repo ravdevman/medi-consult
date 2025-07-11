@@ -46,3 +46,32 @@ main {
     background-color: var(--light);
 }
 
+.container-slot {
+    display: flex;
+    gap: 50px;
+}
+
+.container-slot form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.container-slot-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 2;
+}
+
+.slot {
+    display: flex;
+    flex-direction: column;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

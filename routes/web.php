@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [DoctorController::class, 'index'])->name('dashboard');
         Route::get('/appointments', [DoctorController::class, 'appointments'])->name('appointments');
         Route::post('/slot/store', [DoctorController::class, 'addSlot'])->name('addSlot');
+        Route::delete('/slot/{id}/destroy', [DoctorController::class, 'destroySlot'])->name('destroySlot');
         Route::put('/appointment/{id}/update-status', [AppointmentController::class, 'updateStatus'])->name('updateStatus');
     });
 

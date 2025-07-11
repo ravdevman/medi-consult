@@ -6,13 +6,15 @@
     <title>@yield("title", "Portal")</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/portal.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
 <header>
     <nav class="navbar">
         <h3>Mediconsult</h3>
         <ul  class="navbar-nav">
-            <li>Acceuil</li>
+            <li><a href="/">Acceuil</a></li>
+            <li><a href="/">Mon historique</a></li>
         </ul>
         <form method="POST" action="{{ route('logout') }}">
             @csrf

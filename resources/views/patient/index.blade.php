@@ -2,7 +2,7 @@
 @extends("layouts.portal")
 @section("title", "Portal - home")
 @section("content")
-    <h1>Bienvenue  Rayane !</h1>
+    <h1>Bienvenue  {{ucfirst(auth()->user()->firstName)}} !</h1>
     {{ session('success') }}
     <div class="center-container">
         <div class="container-card search">
@@ -30,10 +30,23 @@
     <div class="container-doctors-list">
         @foreach($doctors as $doctor)
             <div class="container-card">
-                <img src="https://www.future-doctor.de/wp-content/uploads/2024/08/shutterstock_2480850611.jpg" />
+                @switch($doctor->doctor->field)
+                    @case('Generaliste')
+                        <img src="{{ asset('images/all.avif') }}" alt="Généraliste">
+                        @break
+                    @case('Cardiologue')
+                        <img src="{{ asset('images/cardio.jpg') }}" alt="Cardiologue">
+                        @break
+
+                    @case('Rhumatologue')
+                        <img src="{{ asset('images/rhum.jpg') }}" alt="Rhumatologue">
+                        @break
+
+                    @default
+                        <img src="{{ asset('images/fields/default.png') }}" alt="Médecin">
+                @endswitch
                 <h5>Dr. {{$doctor->lastName}} {{$doctor->firstName}}</h5>
                 <h6>{{$doctor->doctor->field}} . {{$doctor->doctor->city}}</h6>
-
                 <form method="post" action="{{route('patient.showDoctor', $doctor->id)}}">
                     @method('GET')
                     @csrf

@@ -15,7 +15,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return view('doctor.slots');
+        $slots = Slot::where('doctor_id', auth()->user()->doctor->id)->get();
+        return view('doctor.slots', compact('slots'));
     }
 
     public function appointments() {
@@ -65,6 +66,13 @@ class DoctorController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Créneau ajouté avec succès.');
+    }
+
+    public function destroySlot($id)
+    {
+        $slot = Slot::findOrFail($id);
+        $slot->delete();
+        return back()->with('success', 'Créneau supprimé avec succès.');
     }
 
     /**

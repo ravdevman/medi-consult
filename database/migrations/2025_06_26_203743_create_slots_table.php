@@ -18,7 +18,7 @@ return new class extends Migration
             $table->time('endTime');
             $table->integer('duration');
             $table->boolean('isAvailable');
-            $table->foreignId("doctor_id")->constrained()->cascadeOnDelete();
+            $table->foreignId("doctor_id")->constrained();
             $table->timestamps();
         });
     }
