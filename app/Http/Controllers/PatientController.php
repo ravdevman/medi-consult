@@ -32,6 +32,12 @@ class PatientController extends Controller
         return view('patient.index', compact('doctors'));
     }
 
+    public function history()
+    {
+        $appointments = Appointment::where('patient_id', auth()->user()->patient->id)->get();
+        return view('patient.history', compact('appointments'));
+    }
+
     public function showDoctor($id) {
         $doctor = User::where(['role' => 'doctor', 'id' => $id])->with('doctor')->first();
         $slots = Slot::where(['doctor_id' =>$doctor->doctor->id])->get();

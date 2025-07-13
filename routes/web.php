@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['patient'])->prefix('patient')->name('patient.')->group(function () {
         Route::get('/portal', [PatientController::class, 'index'])->name('portal');
+        Route::get('/history', [PatientController::class, 'history'])->name('history');
         Route::get('/doctor/{id}', [PatientController::class, 'showDoctor'])->name('showDoctor');
         Route::post('/appointment/{slot}', [PatientController::class, 'makeAppointment'])->name('makeAppointment');
     });

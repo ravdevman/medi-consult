@@ -14,7 +14,7 @@
         <h3>Mediconsult</h3>
         <ul  class="navbar-nav">
             <li><a href="/">Acceuil</a></li>
-            <li><a href="/">Mon historique</a></li>
+            <li><a href="{{route('patient.history')}}">Mon historique</a></li>
         </ul>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
