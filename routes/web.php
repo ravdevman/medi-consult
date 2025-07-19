@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/slot/store', [DoctorController::class, 'addSlot'])->name('addSlot');
         Route::delete('/slot/{id}/destroy', [DoctorController::class, 'destroySlot'])->name('destroySlot');
         Route::put('/appointment/{id}/update-status', [AppointmentController::class, 'updateStatus'])->name('updateStatus');
+        Route::get('/report/{id}/view', [AppointmentController::class, 'report'])->name('report');
+        Route::post('/appointment/{id}/add-report', [AppointmentController::class, 'addReport'])->name('addReport');
     });
 
     Route::middleware(['patient'])->prefix('patient')->name('patient.')->group(function () {
@@ -46,6 +48,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/history', [PatientController::class, 'history'])->name('history');
         Route::get('/doctor/{id}', [PatientController::class, 'showDoctor'])->name('showDoctor');
         Route::post('/appointment/{slot}', [PatientController::class, 'makeAppointment'])->name('makeAppointment');
+        Route::get('/report/{id}', [PatientController::class, 'report'])->name('report');
     });
 
     //Route::resource("user", UserController::class);

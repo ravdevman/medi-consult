@@ -11,6 +11,7 @@
             <th>heure debut</th>
             <th>duree (min)</th>
             <th>Statu</th>
+            <th>Compte rendu</th>
         </tr>
         @foreach($appointments as $appointment)
             <tr>
@@ -27,7 +28,7 @@
                     {{$appointment->slot->duration}}
                 </td>
                 <td>
-                    <form method="POST" action="{{ route('doctor.updateStatus', $appointment->id) }}">
+                    <form method="POST" action="{{ route('doctor.updateStatus', $appointment) }}">
                         @method('PUT')
                         @csrf
                         <select name="status" onchange="this.form.submit()">
@@ -35,6 +36,13 @@
                             <option value="{{ Appointment::STATUS_REFUSED }}" {{ $appointment->status == Appointment::STATUS_REFUSED ? 'selected' : '' }}>Refusé</option>
                             <option value="{{ Appointment::STATUS_VALIDATED }}" {{ $appointment->status == Appointment::STATUS_VALIDATED ? 'selected' : '' }}>Validé</option>
                         </select>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="{{ route('doctor.report', $appointment->id) }}">
+                        @method('GET')
+                        @csrf
+                        <input type="submit" value="Ajouter un compte rendu">
                     </form>
                 </td>
             </tr>

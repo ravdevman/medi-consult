@@ -30,7 +30,11 @@
                     {{$appointment->status}}
                 </td>
                 <td>
-                    {{$appointment->report_id}}
+                    @if($appointment->report_id)
+                        <a href="{{route('patient.report', $appointment->report_id)}}">Voir</a>
+                    @else
+                        --
+                    @endif
                 </td>
             </tr>
         @endforeach

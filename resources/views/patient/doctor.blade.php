@@ -5,7 +5,7 @@
         @method('get')
         <input type="submit" value="Retour">
     </form>
-    <h1>Detail medecin</h1>
+    <h1><i class="bi bi-heart-pulse-fill" style="margin-right: 10px; font-size: 24px"></i>Detail medecin</h1>
     {{ session('success') }}
     <div class="doctor-details-container">
         <div class="detail-row">
@@ -27,7 +27,7 @@
             <p>{{$doctor->doctor->city}}</p>
         </div>
 
-
+        <h2 class="sub-title-section"><i class="bi bi-calendar-week-fill" style="margin-right: 10px"></i>Liste des disponibilités: </h2>
         <table class="booking-table">
             <tr>
                 <th>Jour</th>

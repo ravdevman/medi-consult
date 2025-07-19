@@ -22,13 +22,15 @@
                     <form action="{{ route('doctor.destroySlot', $slot->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="supprimer">
+                        <button type="submit" class="delete-btn">
+                            <i class="bi bi-ban" style="color: #e63737; margin-right: 10px"></i>Supprimer
+                        </button>
                         <h3>Jour</h3>
-                        <h3>{{$slot->day}}</h3>
+                        <h4>{{$slot->day}}</h4>
                         <h3>Temps de debut</h3>
-                        <h3>{{$slot->startTime}}</h3>
+                        <h4>{{$slot->startTime}}</h4>
                         <h3>Temps de fin</h3>
-                        <h3>{{$slot->endTime}}</h3>
+                        <h4>{{$slot->endTime}}</h4>
                     </form>
                 </div>
             @endforeach

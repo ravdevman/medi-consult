@@ -11,10 +11,10 @@
 <body>
 <header>
     <nav class="navbar">
-        <h3>Mediconsult</h3>
+        <img src="{{ asset('images/logo.png') }}" class="logo">
         <ul  class="navbar-nav">
-            <li><a href="/">Acceuil</a></li>
-            <li><a href="{{route('patient.history')}}">Mon historique</a></li>
+            <li><i class="bi bi-house-door-fill" style="color: #0676A4"></i><a href="/">Acceuil</a></li>
+            <li><i class="bi bi-clipboard2-minus-fill" style="color: #0676A4"></i> <a href="{{route('patient.history')}}">Mon historique</a></li>
         </ul>
         <form method="POST" action="{{ route('logout') }}">
             @csrf

@@ -6,7 +6,7 @@
     {{ session('success') }}
     <div class="center-container">
         <div class="container-card search">
-            <h5>Filtre</h5>
+            <h5><i class="bi bi-filter" style="margin-right: 5px"></i>Filtre</h5>
             <form method="get" action="{{route('patient.portal')}}">
                 <label>Spécialité</label>
                 <select name="field">
@@ -22,11 +22,13 @@
                         <option value="{{ $key }}" {{ request('city') == $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
-                <input type="submit" value="rechercher">
+                <button type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
             </form>
         </div>
     </div>
-    <h3>Medecin Disponible</h3>
+    <h3><i class="bi bi-circle-fill" style="margin-right: 5px; color: #5ad65a; font-size: 12px"></i>Medecin Disponible</h3>
     <div class="container-doctors-list">
         @foreach($doctors as $doctor)
             <div class="container-card">
@@ -45,7 +47,7 @@
                     @default
                         <img src="{{ asset('images/fields/default.png') }}" alt="Médecin">
                 @endswitch
-                <h5>Dr. {{$doctor->lastName}} {{$doctor->firstName}}</h5>
+                <h5><i class="bi bi-person-fill"></i> Dr. {{$doctor->lastName}} {{$doctor->firstName}}</h5>
                 <h6>{{$doctor->doctor->field}} . {{$doctor->doctor->city}}</h6>
                 <form method="post" action="{{route('patient.showDoctor', $doctor->id)}}">
                     @method('GET')

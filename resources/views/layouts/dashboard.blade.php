@@ -6,18 +6,19 @@
     <title>@yield("title", "Dashboard")</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
     <header class="card">
         <nav class="navbar">
-            <h3>Mediconsult</h3>
+            <img src="{{ asset('images/logo.png') }}" class="logo">
             <ul  class="navbar-nav">
                 <div>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('doctor.dashboard')}}">Crenaux</a>
+                        <a class="nav-link" href="{{route('doctor.dashboard')}}"><i class="bi bi-smartwatch" style="margin-right: 10px"></i>Crenaux</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('doctor.appointments')}}">rendez-vous</a>
+                        <a class="nav-link" href="{{route('doctor.appointments')}}"><i class="bi bi-clipboard-check-fill" style="margin-right: 10px"style="margin-right: 10px"></i>rendez-vous</a>
                     </li>
                 </div>
                 <form method="POST" action="{{ route('logout') }}">

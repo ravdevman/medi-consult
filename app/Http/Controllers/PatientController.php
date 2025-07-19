@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Report;
 use App\Models\Slot;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -66,6 +67,15 @@ class PatientController extends Controller
     {
         //
     }
+
+    public function report($id)
+    {
+        $report = Report::findOrFail($id);
+
+        return view('patient.report', compact('report'));
+    }
+
+
 
     /**
      * Store a newly created resource in storage.

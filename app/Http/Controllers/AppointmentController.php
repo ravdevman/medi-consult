@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Report;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -28,6 +29,27 @@ class AppointmentController extends Controller
         $appointment = Appointment::findOrFail($id);
         $appointment->status = $request->status;
         $appointment->save();
+        return redirect()->route('doctor.appointments');
+    }
+
+    public function report($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        return view('doctor.report', compact('appointment'));
+    }
+
+    public function addReport(Request $request, $id)
+    {
+        $report = Report::create([
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+
+        $appointment = Appointment::findOrFail($id);
+
+        $appointment->report_id = $report->id;
+        $appointment->save();
+
         return redirect()->route('doctor.appointments');
     }
 

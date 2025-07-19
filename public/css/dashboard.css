@@ -68,6 +68,20 @@ main {
 .slot {
     display: flex;
     flex-direction: column;
+    border: 1px solid var(--lightGray);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.slot h4 {
+    color: #4a4a4a;
+    font-weight: normal;
+}
+
+.delete-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .list {
