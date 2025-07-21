@@ -1,37 +1,37 @@
 @extends("layouts.portal")
-@section("title", "Portal - home")
+@section("title", "Portal - Home")
 @section("content")
     <h1>Votre historique</h1>
     {{ session('success') }}
     <table>
         <tr>
             <th>Jour</th>
-            <th>Medecin</th>
-            <th>heure debut</th>
-            <th>duree (min)</th>
-            <th>Status</th>
-            <th>Compte rendu</th>
+            <th>Médecin</th>
+            <th>Heure de début</th>
+            <th>Durée (min)</th>
+            <th>Statut</th>
+            <th>Compte-rendu</th>
         </tr>
         @foreach($appointments as $appointment)
             <tr>
                 <td>
-                    {{$appointment->slot->day}}
+                    {{ $appointment->slot->day }}
                 </td>
                 <td>
-                    {{$appointment->doctor->user->firstName}}
+                    {{ $appointment->doctor->user->firstName }}
                 </td>
                 <td>
-                    {{$appointment->slot->startTime}}
+                    {{ $appointment->slot->startTime }}
                 </td>
                 <td>
-                    {{$appointment->slot->duration}}
+                    {{ $appointment->slot->duration }}
                 </td>
                 <td>
-                    {{$appointment->status}}
+                    {{ $appointment->status }}
                 </td>
                 <td>
                     @if($appointment->report_id)
-                        <a href="{{route('patient.report', $appointment->report_id)}}">Voir</a>
+                        <a href="{{ route('patient.report', $appointment->report_id) }}">Voir</a>
                     @else
                         --
                     @endif

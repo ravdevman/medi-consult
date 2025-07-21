@@ -32,7 +32,7 @@
         <div class="container">
             @yield("content")
         </div>
-        <footer>
+        <footer style="margin-top: 100px; text-align: center">
             Copyright @ Mediconsult
         </footer>
     </main>

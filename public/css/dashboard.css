@@ -89,3 +89,25 @@ main {
     flex-direction: row;
     gap: 10px;
 }
+
+.form-report {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.form-report textarea {
+    resize: none;
+    font-size: 14px;
+    border-radius: 6px;
+    line-height: 1.5;
+    background-color: #f8f8f8;
+    width: 100%;
+    padding: 3px 10px;
+    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+    border: 2px solid #dee1e2;
+    display: block;
+    box-sizing: border-box;
+}

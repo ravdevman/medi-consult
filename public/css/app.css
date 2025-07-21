@@ -122,3 +122,28 @@ table, td, th {
     height: 40px;
     width: auto;
 }
+
+
+.alert-success {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 7px;
+    box-sizing: border-box;
+    margin: 10px 0;
+    width: fit-content;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.alert-fail {
+    box-sizing: border-box;
+    margin: 10px 0;
+    width: fit-content;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--red);
+    color: var(--white);
+}

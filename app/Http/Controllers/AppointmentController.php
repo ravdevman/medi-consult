@@ -29,7 +29,7 @@ class AppointmentController extends Controller
         $appointment = Appointment::findOrFail($id);
         $appointment->status = $request->status;
         $appointment->save();
-        return redirect()->route('doctor.appointments');
+        return redirect()->route('doctor.appointments')->with('success', 'Statut modifié avec succès.');;
     }
 
     public function report($id)
@@ -37,6 +37,26 @@ class AppointmentController extends Controller
         $appointment = Appointment::findOrFail($id);
         return view('doctor.report', compact('appointment'));
     }
+
+    public function editReport($id)
+    {
+        $report = Report::findOrFail($id);
+        return view('doctor.editReport', compact('report'));
+    }
+
+    public function updateReport(Request $request, $id)
+    {
+        $report = Report::findOrFail($id);
+
+        $report->update([
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('doctor.appointments')->with('success', 'Compte-rendu mis à jour avec succès.');
+    }
+
+
 
     public function addReport(Request $request, $id)
     {

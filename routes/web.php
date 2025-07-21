@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/slot/{id}/destroy', [DoctorController::class, 'destroySlot'])->name('destroySlot');
         Route::put('/appointment/{id}/update-status', [AppointmentController::class, 'updateStatus'])->name('updateStatus');
         Route::get('/report/{id}/view', [AppointmentController::class, 'report'])->name('report');
+        Route::get('/report/{id}/edit', [AppointmentController::class, 'editReport'])->name('editReport');
+        Route::put('/appointment/{id}/update-report', [AppointmentController::class, 'updateReport'])->name('updateReport');
         Route::post('/appointment/{id}/add-report', [AppointmentController::class, 'addReport'])->name('addReport');
     });
 
